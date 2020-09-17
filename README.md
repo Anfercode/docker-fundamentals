@@ -13,7 +13,7 @@ This repository is intended to show the Docker fundamentals from my point of vie
 
 ## What is Docker?
 
-Docker allows solving problems of Build, Ship and Run software in diferent platforms, using the concept of containers, the containers is a way to group processes, this make it more versitile, eficient and more isolated processes of the host machine.
+Docker allows solving problems of Build, Ship and Run software in different platforms, using the concept of containers, the containers are a way to group processes, this make it more versitile, efficient and more isolated processes of the host machine.
 
 
 <div id='id2'/>
@@ -52,7 +52,7 @@ docker have a client-server arquitecture and use a deamon to comunicate the clie
 
 ## What is a container?
 
-A container is a fundamental part in docker, the containers are a way to group processes without need a hardware simulations or virtual machines, the containers run natively (only native in linux servers) and this processes only live in the container's context and use only the resources defined for this container.
+A container is a fundamental part in docker, the containers are a way to group processes without need a hardware simulation or a virtual machine, the containers run natively (only native in linux servers) and these processes only live in the container's context and only use the resources defined for this container.
 
 <div id='id6'/>
 
@@ -60,6 +60,8 @@ A container is a fundamental part in docker, the containers are a way to group p
 
 ### cheat sheet of commands
 
+- **docker run image-name** => Run a container with the image named.
+- **docker run -it image-name** => Run a container with the image named in interactive mode.
 - **docker ps** => This command list the containers running.
 - **docker ps -a** => This command list the all containers.
 - **docker ps -aq** => This command list the container's ID.
@@ -67,6 +69,10 @@ A container is a fundamental part in docker, the containers are a way to group p
 - **docker inspect -f '{{}}' Container_ID** => Get the atribute of a internal details of a container, [here](https://docs.docker.com/engine/reference/commandline/inspect/) for more uses of inspect format.
 - **docker rm Container_ID** => Stop (if the container is running) and delete the container.
 - **docker stop Container_ID** => Stop the container.
-- **docker logs Container_ID** => Show the logs of the container.
+- **docker logs Container_ID** => Show the container logs.
 - **docker container prune** => Delete all the stopped containers.
 - **docker rename name1 name2** => Rename the container.
+- **docker exec -it Container_ID command** => Run command in a running container.
+- **docker kill Container_ID** => Kill the main process of the container, when the main process of the cointainer is killed, the container stop running.
+- **docker run -d --name server -p 8080:00  container_name** => the command -p is for redirect the port of the docker container to another port of the host machine, we'll going to check this in another section
+
