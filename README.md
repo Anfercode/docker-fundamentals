@@ -15,7 +15,6 @@ This repository is intended to show the Docker fundamentals from my point of vie
 
 Docker allows solving problems of Build, Ship and Run software in different platforms, using the concept of containers, the containers are a way to group processes, this make it more versitile, efficient and more isolated processes of the host machine.
 
-
 <div id='id2'/>
 
 ## Problems of the software development
@@ -58,7 +57,7 @@ A container is a fundamental part in docker, the containers are a way to group p
 
 ## Learn use the containers
 
-### cheat sheet of commands
+### Cheat sheet of commands
 
 - **docker run image-name** => Run a container with the image named.
 - **docker run -it image-name** => Run a container with the image named in interactive mode.
@@ -74,5 +73,10 @@ A container is a fundamental part in docker, the containers are a way to group p
 - **docker rename name1 name2** => Rename the container.
 - **docker exec -it Container_ID command** => Run command in a running container.
 - **docker kill Container_ID** => Kill the main process of the container, when the main process of the cointainer is killed, the container stop running.
-- **docker run -d --name server -p 8080:00  container_name** => the command -p is for redirect the port of the docker container to another port of the host machine, we'll going to check this in another section
+- **docker run -d --name server -p 8080:00  container_name** => the command -p is for redirect the port of the docker container to another port of the host machine.
+
+### Data in docker
+
+If you want run a container to manage data, like a database, when you delete the container, the data inside of it will be deleted too, to avoid this exits the command -v, this command help us to manage the data volumes of the container to the host machine, here an example **docker run -d --name db -v host-machine-path:container-path container_img**, this command make a mount of the container to the host machine, all the changes make in the path of the container or the path of the host machine, they will be listened to each other.
+
 
