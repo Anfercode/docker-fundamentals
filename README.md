@@ -79,4 +79,16 @@ A container is a fundamental part in docker, the containers are a way to group p
 
 If you want run a container to manage data, like a database, when you delete the container, the data inside of it will be deleted too, to avoid this exits the command -v, this command help us to manage the data volumes of the container to the host machine, here an example **docker run -d --name db -v host-machine-path:container-path container_img**, this command make a mount of the container to the host machine, all the changes make in the path of the container or the path of the host machine, they will be listened to each other.
 
+### volumes
 
+The volumes is the way to persist data in docker, in the last section we use the command -v to make the forwarding the container path to the host machine path, but if we want to persist data of a database is'nt the good way to do this, because the file system of the host machine can do changes of the file system of the container, this can generate future issues, the good way the manage the volumes in docker is follow the next steps:
+
+**docker create volume volume-name:** this command create a docker volume.
+
+**docker run -d --name db --mount src=volume-name dst=cotainer-path:** this is the good way to run the volume of a container, because we dont need interact to the container file system, this make them more secure to work.
+
+**docker volume ls:** this command show us the all volumes we have.
+
+**docker volume prune:** this command delete all the free volumes.
+
+and a extra tip, docker can connect the volumes of a diferent device, like a S3 machine, to the own device, [here](https://docs.docker.com/storage/) is the docker documentation of how to manage data.
