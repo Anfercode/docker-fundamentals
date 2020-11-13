@@ -123,5 +123,8 @@ The images are a important component of docker, are the templates of the contain
 
 to build own images, we create a file named `Dockerfile`, this file is the recipe to create new images, the dockerfile, always start with a `FROM` the from is the base image of the custom images, that means, if we want a container runs django, in the dockerfile specify the base image, for example, a ubuntu image, and we add the other tools to have the django image, adding python and other django dependencies, to add the other dependencies in time of build, the command `RUN` runs an especific command, for example `RUN touch file.txt`, will be an example of the Dockerfile in the root of this repository.
 
-Thanks to the Dockerfile, we can see the layers of an image, but in the case of don't have the dockerfile, exists a command `docker history image`, this command help us to see the layers of an image, but the information can be hard to read with this command, [dive](https://github.com/wagoodman/dive) is a CLI that help us to see the layers of the images more detailed, to use dive, run the command `dive image-name`.
+Thanks to the Dockerfile, we can see the layers of an image, but in the case of don't have the Dockerfile, exists a command `docker history image`, this command help us to see the layers of an image, but the information can be hard to read with this command, [dive](https://github.com/wagoodman/dive) is a CLI app that help us to see the layers of the images more detailed, to use dive, run the command `dive image-name`.
 
+## Develop with docker
+
+In the folder `example` of this repository we can find a example to how develop a little python app using the `Dockerfile`, clarification, docker always prioritizes the commands that are executed in the `docker run` than those of the `dockerfile` CMD.
