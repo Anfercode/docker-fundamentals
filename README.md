@@ -63,36 +63,36 @@ The containers, when is created, run many processes, but, the container only wil
 
 ### Cheat sheet of commands
 
-- **docker run image-name** => Run a container with the image named.
-- **docker run -it image-name** => Run a container with the image named in interactive mode.
+- **docker run [image-name]** => Run a container with the image named.
+- **docker run -it [image-name]** => Run a container with the image named in interactive mode.
 - **docker ps** => This command list the containers running.
 - **docker ps -a** => This command list the all containers.
 - **docker ps -aq** => This command list the container's ID.
-- **docker inspect Container_ID** => Show the internal details of a container.
-- **docker inspect -f '{{}}' Container_ID** => Get the atribute of a internal details of a container, [here](https://docs.docker.com/engine/reference/commandline/inspect/) for more uses of inspect format.
-- **docker rm Container_ID** => Stop (if the container is running) and delete the container.
-- **docker stop Container_ID** => Stop the container.
-- **docker logs Container_ID** => Show the container logs.
-- **docker logs -f Container_ID** => Show the container follow up logs.
+- **docker inspect [Container_ID]** => Show the internal details of a container.
+- **docker inspect -f '{{}}' [Container_ID]** => Get the atribute of a internal details of a container, [here](https://docs.docker.com/engine/reference/commandline/inspect/) for more uses of inspect format.
+- **docker rm [Container_ID]** => Stop (if the container is running) and delete the container.
+- **docker stop [Container_ID]** => Stop the container.
+- **docker logs [Container_ID]** => Show the container logs.
+- **docker logs -f [Container_ID]** => Show the container follow up logs.
 - **docker container prune** => Delete all the stopped containers.
-- **docker rename name1 name2** => Rename the container.
-- **docker exec -it Container_ID command** => Run command in a running container.
-- **docker kill Container_ID** => Kill the main process of the container, when the main process of the cointainer is killed, the container stop running.
-- **docker run -d --name server -p 8080:00  container_name** => the command -p is for redirect the port of the docker container to another port of the host machine.
+- **docker rename [name] [new-name]** => Rename the container.
+- **docker exec -it [Container_ID] [command]** => Run command in a running container.
+- **docker kill [Container_ID]** => Kill the main process of the container, when the main process of the cointainer is killed, the container stop running.
+- **docker run -d --name [container-name] -p 8080:00 [image_name]** => the command -p is for redirect the port of the docker container to another port of the host machine.
 
 ## Data in docker
 
 ### Bind mounts
 
-If you want run a container to manage data, like a database, when you delete the container, the data inside of it will be deleted too, to avoid this exist the Bind mounts, is a way to manage data in docker and we can using adding the command -v, here an example **docker run -d --name db -v host-machine-path:container-path container_img**, this command make a mount of the container to the host machine, all the changes make in the path of the container or the path of the host machine, they will be listened to each other.
+If you want run a container to manage data, like a database, when you delete the container, the data inside of it will be deleted too, to avoid this exist the Bind mounts, is a way to manage data in docker and we can using adding the command -v, here an example **docker run -d --name [container-name] -v [host-machine-path]:[container-path] [container_img]**, this command make a mount of the container to the host machine, all the changes make in the path of the container or the path of the host machine, they will be listened to each other.
 
 ### Volumes
 
 The volumes is the way to persist data in docker, in the last section we the bind mounts to make the forwarding the container path to the host machine path, but if we want to persist data of a database is'nt the good way to do this, because the file system of the host machine can do changes of the file system of the container, this can generate future issues, the good way the manage the volumes this cases is creating a volumes, the volumes are managed by docker and the data is'nt easy accessible, here is the commands we should know to use the volumes:
 
-**docker create volume volume-name:** this command create a docker volume.
+**docker create volume [volume-name]:** this command create a docker volume.
 
-**docker run -d --name db --mount src=volume-name dst=cotainer-path:** this is the good way to run the volume of a container, because we dont need interact to the container file system, this make them more secure to work.
+**docker run -d --name [container-name] --mount src=[volume-name] dst=[container-path]:** this is the good way to run the volume of a container, because we dont need interact to the container file system, this make them more secure to work.
 
 **docker volume ls:** this command show us the all volumes we have.
 
@@ -100,9 +100,9 @@ The volumes is the way to persist data in docker, in the last section we the bin
 
 if we want get a file/path on a container or put data in the container from the host machine, this command help us:
 
-**docker cp file/path container:file/path:** If we want put information on the container
+**docker cp [file/path] [container]:[file/path]:** If we want put information on the container
 
-**docker cp container:file/path file/path:** If we want get information on the container
+**docker cp [container]:[file/path] [file/path]:** If we want get information on the container
 
 and a extra tip, docker can connect the volumes of a diferent device, like a S3 machine, to the own device, [here](https://docs.docker.com/storage/) is the docker documentation of how to manage data.
 
@@ -112,11 +112,11 @@ The images are a important component of docker, are the templates of the contain
 
 ### image cheatsheet
 
-- **docker pull image:tag:** download the image of docker hub (if you not specify the tag, docker download the last version of the image :latest).
-- **docker push dockerhub-usr/repository:tag:** push an image to dockerhub.
-- **docker tag repository:tag new-repository:tag:** Rename the tag of an image.
+- **docker pull [image:tag]:** download the image of docker hub (if you not specify the tag, docker download the last version of the image :latest).
+- **docker push [dockerhub-usr]/[repository:tag]:** push an image to dockerhub.
+- **docker tag [repository:tag] [new-repository:tag]:** Rename the tag of an image.
 - **docker image ls:** list all images of the host machine.
-- **docker image rm -f image_name:** Deletes the image of the host machine.
+- **docker image rm -f [image_name]:** Deletes the image of the host machine.
 - **docker prune -a:** Deletes all unused images.
 
 ### building own images
@@ -144,3 +144,4 @@ The networking in docker is the way to connect the containers such as connect th
 - **docker network inspect [network-name]:** show the setting of the network.
 - **docker network inspect -f '{{}}' [network-name]:** Get a especific configuration of the network, this using Go templates.
 - **docker network connect [network-name] [container-name]:** connect a container to a network.
+
