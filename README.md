@@ -128,3 +128,19 @@ Thanks to the Dockerfile, we can see the layers of an image, but in the case of 
 ## Develop with docker
 
 In the folder `example` of this repository we can find a example to how develop a little python app using the `Dockerfile`, clarification, docker always prioritizes the commands that are executed in the `docker run` than those of the `dockerfile` CMD.
+
+## Networking in docker
+
+The networking in docker is the way to connect the containers such as connect the container of the code lives with the container where the database live, the containers of the network don't know there are other containers, They assume they are other machines, docker have three types of networks available in docker.
+
+- **Bridge:** Is the default network a containers gets attached to.
+- **Host:** This takes out any network isolation between the docker host and the docker containers, For example, if you were to run a web server on port 5000 in a web-app container attached to the host network, it is automatically accessible on the same port externally, without requiring to publish the port using the -p option.
+- **None:** The containers are not attached to any network and does not have access to the external network or other containers. It is isolated from all other networks.
+
+### network cheatsheet
+
+- **docker network ls:** List all the networks in docker.
+- **docker network create --attachable [name]:** create a new network, the command `--attachable` to allow others containers to connect to the network.
+- **docker network inspect [network-name]:** show the setting of the network.
+- **docker network inspect -f '{{}}' [network-name]:** Get a especific configuration of the network, this using Go templates.
+- **docker network connect [network-name] [container-name]:** connect a container to a network.

@@ -21,10 +21,10 @@ RUN pip3.8 install -r requirements.txt
 ## Changed or not, if change docker copy the file to the container.
 COPY . .
 
-## Set the environment variables for the container, in the run of the CMD
-## will be used, this is bad practice, this is for practical purposes.
-ENV port=8080
+## Set the environment variables for the container.
+ENV flask_port=8080
 ENV host=0.0.0.0
+ENV mongo_url=mongodb://db:27017/test
 
 ## Make bindable the port to the host machine, don't expose the port
 EXPOSE 8080
