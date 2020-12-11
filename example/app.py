@@ -1,12 +1,13 @@
 import requests
 import os
+from decouple import config
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 
-HOST = os.environ.get('host')
-FLASK_PORT = os.environ.get('flask_port')
-MONGO_URL = os.environ.get('mongo_url')
+HOST = config('HOST')
+FLASK_PORT = config('FLASK_PORT')
+MONGO_URL = config('MONGO_URL')
 
 app = Flask(__name__, template_folder='templates')
 

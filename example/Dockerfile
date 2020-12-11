@@ -2,8 +2,14 @@
 ## alpine is a linux distro optimazed for containers.
 FROM python:3.8-alpine
 
+## Intalling the dependencies of the libraries.
+RUN apk add --update --no-cache g++ gcc libxslt-dev
+
+## Create the work repository
+RUN mkdir /code
+
 ## Go to the work path in the container, is like command cd
-WORKDIR /usr/src
+WORKDIR /code
 
 ## Copy requirements.txt of the host machine path to the container path,
 ## if we want specify the paths use COPY ['.', "/usr/src"],
@@ -14,7 +20,6 @@ COPY requirements.txt .
 ## Run the command of the moment of build the container,
 ## in this case the command is to get the dependencies
 ## of the proyect
-RUN apk add --update --no-cache g++ gcc libxslt-dev
 RUN pip3.8 install -r requirements.txt
 
 ## Copy all the other files to the container, docker verify if the requirements.txt
@@ -22,9 +27,9 @@ RUN pip3.8 install -r requirements.txt
 COPY . .
 
 ## Set the environment variables for the container.
-ENV flask_port=8080
-ENV host=0.0.0.0
-ENV mongo_url=mongodb://db:27017/test
+ENV FLASK_PORT=8080
+ENV HOST=0.0.0.0
+ENV MONGO_URL=mongodb://db:27017/test
 
 ## Make bindable the port to the host machine, don't expose the port
 EXPOSE 8080
