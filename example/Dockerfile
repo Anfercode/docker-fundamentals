@@ -26,7 +26,6 @@ RUN pip3.8 install -r requirements.txt
 ## Changed or not, if change docker copy the file to the container.
 COPY . .
 
-## Set the environment variables for the container.
 ENV FLASK_PORT=8080
 ENV HOST=0.0.0.0
 ENV MONGO_URL=mongodb://db:27017/test

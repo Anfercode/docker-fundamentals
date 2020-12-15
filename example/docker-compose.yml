@@ -1,0 +1,34 @@
+# Version of the docker compose
+version: "3.8"
+
+# The services of the app, like microservices.
+services:
+  # the service that run the code
+  app:
+    # The dockerfile to build
+    build: .
+    # The file of the environment variables, commonly is a file named .env
+    # the file NEVER be upload to the git repo, in this case we use a env_test named file.
+    env_file:
+      - .env_test
+    # The service dependecies to run, if the service db is not on, the service app dont be running.
+    depends_on:
+      - db
+    # The port to expose the host machine.
+    ports:
+      - "8080:8080"
+    # Define the directory of the volume in the service.
+    volumes:
+      - ".:/code"
+  # The service that runs the database, in this case mongo
+  db:
+    # The image to build.
+    image: mongo
+    # Defining the volume to persist the database data.
+    volumes:
+      - db-data:/data/db
+
+# The volumes will create the docker compose.
+volumes:
+  # The name of the volume.
+  db-data:

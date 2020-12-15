@@ -1,4 +1,5 @@
 # Docker Fundamentals :whale:
+
 This repository is intended to show the Docker fundamentals from my point of view.
 
 ## Index :file_folder:
@@ -33,7 +34,7 @@ this problems are easily solved by docker.
 
 ## Instalation
 
-For windows and mac, we need to download the docker's client, in this link https://www.docker.com/get-started we can find it, for linux is a bit diferent, [here](https://docs.docker.com/engine/install/ubuntu/) can find a tutorial of how install docker in linux (The instalation is for ubuntu).
+For windows and mac, we need to download the docker's client, in this link <https://www.docker.com/get-started> we can find it, for linux is a bit diferent, [here](https://docs.docker.com/engine/install/ubuntu/) can find a tutorial of how install docker in linux (The instalation is for ubuntu).
 
 <div id='id4'/>
 
@@ -137,11 +138,35 @@ The networking in docker is the way to connect the containers such as connect th
 - **Host:** This takes out any network isolation between the docker host and the docker containers, For example, if you were to run a web server on port 5000 in a web-app container attached to the host network, it is automatically accessible on the same port externally, without requiring to publish the port using the -p option.
 - **None:** The containers are not attached to any network and does not have access to the external network or other containers. It is isolated from all other networks.
 
-### network cheatsheet
+### Network cheatsheet
 
 - **docker network ls:** List all the networks in docker.
 - **docker network create --attachable [name]:** create a new network, the command `--attachable` to allow others containers to connect to the network.
 - **docker network inspect [network-name]:** show the setting of the network.
 - **docker network inspect -f '{{}}' [network-name]:** Get a especific configuration of the network, this using Go templates.
 - **docker network connect [network-name] [container-name]:** connect a container to a network.
+
+## Docker compose
+
+All we learn about docker, the container are usefull, but now are a new problem, configurate the conteiners, volumes and networks are so tedius with the things we learn until now, docker compose is a tool can help us to run the containers, create and configurate the volumes and networks with one file `docker-compose.yml`, to see how to use the docker compose, in the folder example can we see it, to run the docker compose file, use the command `docker-compose up`.
+
+### Docker compose cheatsheet
+
+- **docker-compose ps** => Show the all services running.
+- **docker-compose up** => Inicialize the services defined in the docker compose file.
+- **docker-compose up -d** => Inicialize the services in dettach mode.
+- **docker-compose build** => Build the services in the docker compose file.
+- **docker-compose up --build** => Build and run the docker compose file.ß
+- **docker-compose down** => Down all the services in the docker compose file.
+- **docker-compose logs** => Show all the logs of the service in the docker compose file.
+- **docker-compose logs -f** => Show the logs in follow mode.
+- **docker-compose logs [service-name]** => Show the logs of a specific service.
+- **docker-compose logs --tail=[number] [service-name]** => Show the number of last lines of the log.
+- **docker-compose exec [service-name] [command]** => Run a command in the specific service.
+- **docker-compose run --rm [service-name] [command]** => Run a container of a specific service.
+- **docker-compose run --rm --service-ports [service-name] [command]** => Run a container of a specific service exposing the ports.
+
+### Docker compose override
+
+The docker compose override is a docker compose tool that makes development easier, works creating a file named `docker-compose.override.yml` this file works with the same structure of the docker `docker-compose.yml` but all diferences of the diferences will be merged or override, this help us to make changes to docker compose without modify the `docker-compose.yml` file.
 
