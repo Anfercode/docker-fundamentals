@@ -9,6 +9,13 @@ This repository is intended to show the Docker fundamentals from my point of vie
 3. [Instalation](#id3)
 4. [Hello word in Docker](#id4)
 5. [What is a container?](#id5)
+6. [Learn use the containers](#id6)
+7. [Data in docker](#id7)
+8. [Images](#id8)
+9. [Develop with docker](#id9)
+10. [Networking in docker](#id10)
+11. [Docker compose](#id11)
+12. [References](#id12)
 
 <div id='id1'/>
 
@@ -42,7 +49,7 @@ For windows and mac, we need to download the docker's client, in this link <http
 
 to run the hello word in docker, we need to execute this command (The docker client must be on).
 
-```
+```bash
 docker run hello-world
 ```
 
@@ -81,6 +88,8 @@ The containers, when is created, run many processes, but, the container only wil
 - **docker kill [Container_ID]** => Kill the main process of the container, when the main process of the cointainer is killed, the container stop running.
 - **docker run -d --name [container-name] -p 8080:00 [image_name]** => the command -p is for redirect the port of the docker container to another port of the host machine.
 
+<div id='id7'/>
+
 ## Data in docker
 
 ### Bind mounts
@@ -107,6 +116,8 @@ if we want get a file/path on a container or put data in the container from the 
 
 and a extra tip, docker can connect the volumes of a diferent device, like a S3 machine, to the own device, [here](https://docs.docker.com/storage/) is the docker documentation of how to manage data.
 
+<div id='id8'/>
+
 ## Images
 
 The images are a important component of docker, are the templates of the containers, the images are immutable, that means, the image cannot be changed once the image is built, the images are managed by layers, this layers system is like git, where each layer is a change of the image, when a image is downloaded, docker gets only the changes of this image (if the image exists now in the host machine).
@@ -126,9 +137,13 @@ to build own images, we create a file named `Dockerfile`, this file is the recip
 
 Thanks to the Dockerfile, we can see the layers of an image, but in the case of don't have the Dockerfile, exists a command `docker history image`, this command help us to see the layers of an image, but the information can be hard to read with this command, [dive](https://github.com/wagoodman/dive) is a CLI app that help us to see the layers of the images more detailed, to use dive, run the command `dive image-name`.
 
+<div id='id9'/>
+
 ## Develop with docker
 
 In the folder `example` of this repository we can find a example to how develop a little python app using the `Dockerfile`, clarification, docker always prioritizes the commands that are executed in the `docker run` than those of the `dockerfile` CMD.
+
+<div id='id10'/>
 
 ## Networking in docker
 
@@ -145,6 +160,8 @@ The networking in docker is the way to connect the containers such as connect th
 - **docker network inspect [network-name]:** show the setting of the network.
 - **docker network inspect -f '{{}}' [network-name]:** Get a especific configuration of the network, this using Go templates.
 - **docker network connect [network-name] [container-name]:** connect a container to a network.
+
+<div id='id11'/>
 
 ## Docker compose
 
@@ -169,6 +186,8 @@ All we learn about docker, the container are usefull, but now are a new problem,
 ### Docker compose override
 
 The docker compose override is a docker compose tool that makes development easier, works creating a file named `docker-compose.override.yml` this file works with the same structure of the docker `docker-compose.yml` but all diferences of the diferences will be merged or override, this help us to make changes to docker compose without modify the `docker-compose.yml` file.
+
+<div id='id12'/>
 
 ## References
 
