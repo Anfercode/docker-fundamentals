@@ -170,3 +170,23 @@ All we learn about docker, the container are usefull, but now are a new problem,
 
 The docker compose override is a docker compose tool that makes development easier, works creating a file named `docker-compose.override.yml` this file works with the same structure of the docker `docker-compose.yml` but all diferences of the diferences will be merged or override, this help us to make changes to docker compose without modify the `docker-compose.yml` file.
 
+## References
+
+This documentation it is based mostly by the [Docker course of platzi](https://platzi.com/cursos/docker/) 💚 💚 💚, but i used complements of other sources to complement the information, next you can see te urls of the complement material:
+
+- [Docker for Python Development?](https://towardsdatascience.com/docker-for-python-development-83ae714468ac).
+- [How to Develop Your Python Docker Applications Faster](https://dzone.com/articles/how-to-develop-your-python-docker-applications-fas).
+- [Docker 101: Fundamentals & The Dockerfile](https://itnext.io/docker-101-fundamentals-the-dockerfile-b33b59d0f14b).
+- [Networking Docker Containers](https://codeburst.io/networking-docker-containers-c4f48339a0df).
+- [Getting Network Information from Docker](https://www.baeldung.com/ops/docker-network-information).
+- [How to Docker Compose a developer environment: an open source example](https://www.codementor.io/@daniellebrero/how-to-docker-compose-a-developer-environment-an-open-source-example-m1grxv19d).
+- [20 Docker commands use cases for developers](https://dev.to/alex_barashkov/20-docker-commands-use-cases-for-developers-2d9g).
+- [Making sense of Docker Compose overrides](https://medium.com/it-dead-inside/making-sense-of-docker-compose-overrides-efb757460d64).
+- [Docker-compose Override - V2M](https://www.youtube.com/watch?v=TPmbwAgN4ZA&t=0s).
+- [CÓMO escribir LOS MEJORES Dockerfiles](https://www.youtube.com/watch?v=QXlQDV9FZhI&t=2s).
+- [Demystifying Docker Compose](https://dev.to/geekgalgroks/demystifying-docker-compose-b62).
+- [Don't just "docker-compose up"](https://dev.to/kbariotis/dont-just-docker-compose-up-gff).
+- [10 docker-compose and docker commands that are useful for active development](https://dev.to/aduranil/10-docker-compose-and-docker-commands-that-are-useful-for-active-development-22f9).
+- [How to run docker container with external volumes](https://codebeamer.com/cb/wiki/5713519).
+
+Make with 💚 by Anfercode.
